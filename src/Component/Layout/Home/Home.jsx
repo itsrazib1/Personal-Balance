@@ -1,5 +1,7 @@
+// import Assingment from "./Assingment";
 import MarketCalculation from "./MarketCalculation";
 import MoneyManagement from "./MoneyManagement";
+
 
 const Home = () => {
   return (
@@ -7,7 +9,8 @@ const Home = () => {
       
       <MoneyManagement/>
       <MarketCalculation/>
-      
+      {/* <Assingment/> */}
+
     </div>
   );
 };

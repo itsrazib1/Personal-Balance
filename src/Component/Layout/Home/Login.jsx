@@ -1,68 +1,103 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import {  useContext, useState } from "react"
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provaider/Authprovaider";
 
 const Login = () => {
+  // const [disabled, setDisabled] = useState(true);
+  const { signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
   const [showPassword, setShowPassword] = useState(false);
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    signIn(email, password).then((result) => {
+      const user = result.user;
+      console.log(user);
+     
+      navigate(from, { replace: true });
+    });
+  };
+
   return (
-    <div>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col  gap-5 lg:flex-row-reverse">
-          <div className="text-center w-1/2 lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
+    <>
+      
+      <div className="min-h-screen rounded-t-full rounded-b-full   bg-base-200 flex justify-center items-center">
+        <div className="w-full max-w-md">
+          <div>
+            <h1 className="text-5xl font-bold text-center mb-6 mt-5">
+              Login now!
+            </h1>
           </div>
-          <div className="card w-1/2 flex-shrink-0 max-w-sm shadow-2xl bg-base-100">
-            <div className="card-body">
-              <div className="form-control">
-                <label className="label">
+
+          <div className=" bg-slate-400 mx-auto ms-2 w-[95%] shadow-2xl p-8">
+            <form onSubmit={handleLogin} className="space-y-4 ">
+              <div>
+                <label htmlFor="email" className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                  type="text"
+                  type="email"
+                  id="email"
+                  name="email"
                   placeholder="email"
-                  className="input input-bordered"
+                  className="input input-bordered px-12"
                 />
               </div>
-              <div className="form-control">
-  <label className="label">
-    <span className="label-text">Password</span>
-  </label>
-  <div className="relative">
-    <input
-      type={showPassword ? 'text' : 'password'}
-      placeholder="password"
-      className="input input-bordered pr-12"
-    />
-    <button
-      type="button"
-      onClick={() => setShowPassword(!showPassword)}
-      className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-600"
-    >
-      {showPassword ? (
-        'Hide'
-      ) : (
-        'Show'
-      )}
-    </button>
-  </div>
-</div>
-              <div className="form-control mt-6">
-                <button className="btn btn-accent">Login</button>
+              <div>
+                <label htmlFor="password" className="label">
+                  Password
+                </label>
+                <div className="flex">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    id="password"
+                    name="password"
+                    placeholder="password"
+                    className="input input-bordered px-12"
+                  />
+                  <span
+                    className="  mt-3 -ms-10 "
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? "Hide" : "show"}
+                  </span>
+                </div>
+
+                <label className="label">
+                  <a href="#" className="label-text-alt link link-hover">
+                    {/* Forgot password? */}
+                  </a>
+                </label>
               </div>
-            </div>
-            <label className="label pb-10 mx-auto">
-              <Link to='/register'  className="label-text-alt link link-hover">
-             dont have any account <span className="text-yellow-600">Register now</span>
-              </Link>
-            </label>
+              <div></div>
+              <div className="flex justify-center">
+                <input
+                  className="btn btn-primary"
+                  type="submit"
+                  value="Login"
+                />
+              </div>
+            </form>
+            <p className="text-center mt-4">
+              <small>
+                New Here?{" "}
+                <Link className="text-yellow-300 underline" to="/signup">
+                  Create an account
+                </Link>
+              </small>
+            </p>
+            {/* <SocialLogin /> */}
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

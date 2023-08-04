@@ -1,6 +1,16 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "./Provaider/Authprovaider";
+
 
 const Navber = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handelelogout = () => {
+    logOut()
+      .then(() => { })
+      .catch(error => console.log(error))
+  }
+  console.log(user?.photoURL);
   const navItem = (
     <>
       <li>
@@ -12,9 +22,18 @@ const Navber = () => {
       <li>
         <Link to='/MarketCalculation'>Market Calculation</Link>
       </li>
-      <li>
-        <Link to='/login'>Login</Link>
-      </li>
+
+      {
+        user ? <> <li>
+          <Link onClick={handelelogout} className="bg-red-600" >logout</Link>
+        </li>
+          <li>
+            <Link className="text-blue-950" >{user?.email}</Link>
+          </li> </> :
+          <> <li>
+            <Link to='/login'>Login</Link>
+          </li></>
+      }
     </>
   );
   return (
@@ -53,11 +72,15 @@ const Navber = () => {
           <ul className="menu menu-horizontal gap-5 px-1">{navItem}</ul>
         </div>
         <div className="navbar-end">
-          <img
-            className=" rounded-full h-12 w-12"
-            src="https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg"
-            alt=""
-          />
+
+
+          {
+            user ? <> <img className=" rounded-full h-12 w-12" src={user?.photoURL} alt="Profile image" /> </> : <><img
+              className=" rounded-full h-12 w-12"
+              src="https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg"
+              alt=""
+            /></> 
+          }
         </div>
       </div>
     </div>

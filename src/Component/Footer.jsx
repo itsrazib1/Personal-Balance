@@ -2,7 +2,7 @@
 const Footer = () => {
     return (
         <div>
-            <footer className="footer p-10 bg-neutral text-neutral-content mb-0">
+            <footer className="footer p-10 bg-neutral text-neutral-content bottom-0 ">
   <div>
     <img className="h-10 rounded-full" src="/public/img/channels4_profile.jpg" alt="" />
     <p><a href="https://itsrazib.fun/">ITS RAZiB</a>.<br/>Providing reliable tech since 2023</p>

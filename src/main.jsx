@@ -8,6 +8,7 @@ import Main from "./Component/Layout/Main";
 import Home from "./Component/Layout/Home/Home";
 import Login from "./Component/Layout/Home/Login";
 import Register from "./Component/Layout/Home/Register";
+import Authprovaider from "./Component/Provaider/Authprovaider";
 
 const router = createBrowserRouter([
   {
@@ -31,8 +32,8 @@ const router = createBrowserRouter([
         element: <Login></Login>,
       },
       {
-        path: "register",
-        element: <Register></Register>,
+        path: "signup",
+        element: <Register></Register> ,
       },
     ],
   },
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <div className="bg-gradient-to-l from-green-500 to-purple-500">
+    <Authprovaider >
     <RouterProvider router={router} />
+    </Authprovaider>
+    </div>
   </React.StrictMode>
 );
