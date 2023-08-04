@@ -63,7 +63,7 @@ const Login = () => {
                     className="input input-bordered px-12"
                   />
                   <span
-                    className="  mt-3 -ms-10 "
+                    className="  mt-3 -ms-12 "
                     onClick={() => setShowPassword(!showPassword)}
                   >
                     {showPassword ? "Hide" : "show"}

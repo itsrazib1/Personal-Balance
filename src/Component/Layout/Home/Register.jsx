@@ -17,7 +17,7 @@ const Register = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const img_hosting_url = `https://api.imgbb.com/1/upload?expiration=600&key=${import.meta.env.VITE_Image_Upload_token}`;
+  const img_hosting_url = `https://api.imgbb.com/1/upload?expiration:null&key=${import.meta.env.VITE_Image_Upload_token}`;
 
   const onSubmit = async (data) => {
     try {

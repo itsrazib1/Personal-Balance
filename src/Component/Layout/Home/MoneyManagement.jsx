@@ -158,8 +158,9 @@ const MoneyManagement = () => {
               Clear
             </button>
           </div>
-          <marquee className="bg-green-200 py-1">Previous money তে ইনপুট দিয়ে Calculate বাটন এবং Difference বাটন এ ক্লিক করতে হবে || Input previous money and click Calculate button and Difference button</marquee>
+          
         </div>
+        <marquee className="bg-green-200 py-1">Previous money তে ইনপুট দিয়ে Calculate বাটন এবং Difference বাটন এ ক্লিক করতে হবে || Input previous money and click Calculate button and Difference button</marquee>
       </div>
     </div>
   );

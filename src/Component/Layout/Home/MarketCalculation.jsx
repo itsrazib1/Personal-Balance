@@ -198,8 +198,9 @@ const MarketCalculation = () => {
           Clear
         </button>
           </div>
-          <marquee className="bg-red-200  py-1">Quantity তে আগে সংখ্যা দিয়ে Price Input করবেন তার পর ইকুয়াল(=) বাটন এ ক্লিক করবেন || Input Price with number in Quantity first and then click on equal(=) button</marquee>
+         
         </div>
+        <marquee className="bg-red-200  py-1">Quantity তে আগে সংখ্যা দিয়ে Price Input করবেন তার পর ইকুয়াল(=) বাটন এ ক্লিক করবেন || Input Price with number in Quantity first and then click on equal(=) button</marquee>
       </div>
     </div>
   );
