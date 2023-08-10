@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { BiPlusCircle } from "react-icons/bi";
+import {  BiX } from "react-icons/bi";
 import html2pdf from "html2pdf.js";
 
 const MarketCalculation = () => {
@@ -120,8 +120,8 @@ const MarketCalculation = () => {
                     }
                     className="border w-full   rounded md:px-0 text-center px-1 py-2"
                   />
-                  <BiPlusCircle
-                    className="ml-2 text-lg  cursor-pointer text-blue-500"
+                  <BiX
+                    className="md:ml-3 sm:ml-0 text-5xl  cursor-pointer text-blue-500"
                     onClick={() =>
                       handleInputChange(
                         index,
