@@ -34,6 +34,12 @@ const MoneyManagement = () => {
     setDifference(0);
     setShowDifference(false);
   };
+  const handleDeleteLine = (index) => {
+    const updatedLines = [...lines];
+    updatedLines.splice(index, 1);
+    setLines(updatedLines);
+  };
+
 
   const handleInputChange = (index, field, value) => {
     const updatedLines = [...lines];
@@ -86,7 +92,7 @@ const MoneyManagement = () => {
             {lines.map((line, index) => (
               <div
                 key={index}
-                className="flex  items-center space-x-2 md:space-x-4 mb-2"
+                className="flex items-center space-x-2 md:space-x-4 mb-2"
               >
                 <span>{index + 1}.</span>
                 <input
@@ -96,7 +102,7 @@ const MoneyManagement = () => {
                   onChange={(e) =>
                     handleInputChange(index, "name", e.target.value)
                   }
-                  className="md:w-full w-40 border rounded md:px-2 px-1 py-1 md:py-2"
+                  className="md:w-full sm:w-40 w-[138px] border rounded md:px-2 px-1 py-1 md:py-2"
                 />
                 <input
                   type="text"
@@ -105,8 +111,14 @@ const MoneyManagement = () => {
                   onChange={(e) =>
                     handleInputChange(index, "amount", e.target.value)
                   }
-                  className="border md:w-full w-40 rounded md:px-2 px-1 py-1 md:py-2"
+                  className="border md:w-full sm:w-40 w-[138px] rounded md:px-2 px-1 py-1 md:py-2"
                 />
+                 <button
+                  onClick={() => handleDeleteLine(index)}
+                  className="bg-red-500 btn-xs md:btn-sm text-white px-2 py-1 rounded"
+                >
+                  Delete
+                </button>
               </div>
             ))}
             <div className="flex items-center space-x-2 mb-2">
