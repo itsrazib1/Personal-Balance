@@ -24,14 +24,15 @@ const Navber = () => {
       </li>
 
       {
-        user ? <> <li>
-          <Link onClick={handelelogout} className="bg-red-600" >logout</Link>
-        </li>
+        user ? <> 
           <li>
-            <Link className="text-blue-950" >{user?.email}</Link>
-          </li> </> :
+            <Link className="text-blue-950" >{user?.displayName}</Link>
+          </li>
+          <li>
+          <Link onClick={handelelogout} className="bg-red-600 hover:bg-red-700 hover:text-white text-white" >Logout</Link>
+        </li> </> :
           <> <li>
-            <Link to='/login'>Login</Link>
+            <Link className="text-white" to='/login'>Login</Link>
           </li></>
       }
     </>
@@ -75,7 +76,7 @@ const Navber = () => {
 
 
           {
-            user ? <> <img className=" rounded-full h-12 w-12" src={user?.photoURL} alt="Profile image" /> </> : <><img
+            user ? <> <img className=" rounded-full h-12 w-12 border border-black" src={user?.photoURL} alt="Profile image" /> </> : <><img
               className=" rounded-full h-12 w-12"
               src="https://static.vecteezy.com/system/resources/previews/000/439/863/original/vector-users-icon.jpg"
               alt=""
